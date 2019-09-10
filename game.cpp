@@ -1,4 +1,6 @@
 #include "game.h"
+#include <iostream>
+#include <string>
 
 Game::Game(Deck deck){
     for(int i = 0; i < 4; i++){
@@ -9,9 +11,17 @@ Game::Game(Deck deck){
 }
 
 std::string Game::to_string(){
-    return temp.at(0).at(0);
+    std::string temp;
+    for (int i = 0; i < table.size(); i++)
+    {
+        for (int j = 0; j < table[i].size(); j++)
+        {
+            temp += table[i][j].to_string() + "\n";
+        }
+    }
+    return temp;
 }
-S
+
 void Game::reset(){
 
 }

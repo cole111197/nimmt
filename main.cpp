@@ -8,5 +8,5 @@ int main(){
     Deck deck{104};
     deck.shuffle();
     Game game{deck};
-    
+    std::cout << game.to_string() << std::endl;
 }

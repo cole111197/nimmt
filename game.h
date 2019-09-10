@@ -1,6 +1,7 @@
 #ifndef __GAME_H
 #define __GAME_H
 #include "card.h"
+#include "deck.h"
 #include <vector>
 
 class Game{
