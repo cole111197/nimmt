@@ -6,7 +6,7 @@
 #include <vector>
 
 int main(){
-    Game game{4};
+    Game game{10};
     
     std::cout << game.to_string() << std::endl;
     for(int i = 0; i < 10; i++){

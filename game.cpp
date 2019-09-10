@@ -3,6 +3,9 @@
 #include <string>
 
 Game::Game(int players){
+    if(players > 10){
+        players = 10;
+    }
     Deck deck{(10*players)+4};
     deck.shuffle();
     for(int i = 0; i < 4; i++){
@@ -70,8 +73,9 @@ void Game::play(int hand_index, int card_index){
         hands[hand_index].inc_score(score);
     } else {
         int score = 0;
-        std::cout << "[Card value " << std::to_string(card.get_value()) << "]: ID of row to take and replace: ";
-        std::cin >> target_row;
+        //std::cout << "[Card value " << std::to_string(card.get_value()) << "]: ID of row to take and replace: ";
+        //std::cin >> target_row;
+        target_row = 0;
         for(int i = 0; i < table[target_row].size(); i++){
             score += table[target_row][i].get_score();
         }
