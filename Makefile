@@ -9,7 +9,7 @@ hand.o: hand.cpp card.o deck.o
 	$(CXX) $(CXXFLAGS) -c hand.cpp -o hand.o
 deck.o: deck.cpp card.o
 	$(CXX) $(CXXFLAGS) -c deck.cpp -o deck.o
-game.o: game.cpp card.o deck.o
+game.o: game.cpp card.o deck.o hand.o
 	$(CXX) $(CXXFLAGS) -c game.cpp -o game.o
 clean:
 	rm -f *.o *.gch ~* a.out nimmt

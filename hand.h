@@ -12,6 +12,7 @@ class Hand{
         std::vector<Card> cards;
     public:
         Hand(Deck &deck);
+        std::vector<Card>& get_cards();
         Card play(int index);
         std::string to_string();
 };

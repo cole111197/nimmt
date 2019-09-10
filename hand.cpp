@@ -15,6 +15,10 @@ Card Hand::play(int index){
     return temp;
 }
 
+std::vector<Card>& Hand::get_cards(){
+    return cards;
+}
+
 std::string Hand::to_string(){
     std::string temp;
     temp += "ID: " + std::to_string(_id) + "\nCards:\n";

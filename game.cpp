@@ -2,12 +2,19 @@
 #include <iostream>
 #include <string>
 
-Game::Game(Deck &deck){
+Game::Game(Deck &deck, int players){
     for(int i = 0; i < 4; i++){
         std::vector<Card> temp;
         temp.push_back(deck.draw());
         table.push_back(temp);
     }
+    for(int i = 0; i < players; i++){
+        hands.push_back(Hand{deck});
+    }
+}
+
+std::vector<Hand>& Game::getHands(){
+    return hands;
 }
 
 std::string Game::to_string(){
@@ -23,7 +30,10 @@ std::string Game::to_string(){
     return temp;
 }
 
-int Game::play(Card card){
+//Fix parameters now that Hands are part of Game
+//play(int hand_index, int card_index)
+int Game::play(int hand_index, int card_index){
+    Card card = hands[hand_index].play(card_index);
     int target_row = -1;
     int target_value = -1;
     int current_value = -1;
