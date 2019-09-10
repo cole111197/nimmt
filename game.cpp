@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 
-Game::Game(Deck &deck, int players){
+Game::Game(int players){
+    Deck deck{(10*players)+4};
+    deck.shuffle();
     for(int i = 0; i < 4; i++){
         std::vector<Card> temp;
         temp.push_back(deck.draw());
@@ -17,10 +19,19 @@ std::vector<Hand>& Game::getHands(){
     return hands;
 }
 
+int Game::row_score(int row){
+    int score = 0;
+    for(int i = 0; i < table[row].size(); i++){
+        score += table[row][i].get_score();
+    }
+    return score;
+}
+
 std::string Game::to_string(){
     std::string temp;
     for (int i = 0; i < table.size(); i++)
     {
+        temp += "ID: " + std::to_string(i) + " -- " + std::to_string(row_score(i)) + " -- ";
         for (int j = 0; j < table[i].size(); j++)
         {
             temp += table[i][j].to_string() + "  ";
@@ -30,9 +41,11 @@ std::string Game::to_string(){
     return temp;
 }
 
-//Fix parameters now that Hands are part of Game
-//play(int hand_index, int card_index)
-int Game::play(int hand_index, int card_index){
+int Game::hand_score(int hand_index){
+    return hands[hand_index].get_score();
+}
+
+void Game::play(int hand_index, int card_index){
     Card card = hands[hand_index].play(card_index);
     int target_row = -1;
     int target_value = -1;
@@ -54,17 +67,17 @@ int Game::play(int hand_index, int card_index){
             table[target_row].clear();
         }
         table[target_row].push_back(card);
-        return score;
+        hands[hand_index].inc_score(score);
     } else {
         int score = 0;
-        std::cout << "ID of row to take and replace: ";
+        std::cout << "[Card value " << std::to_string(card.get_value()) << "]: ID of row to take and replace: ";
         std::cin >> target_row;
         for(int i = 0; i < table[target_row].size(); i++){
             score += table[target_row][i].get_score();
         }
         table[target_row].clear();
         table[target_row].push_back(card);
-        return score;
+        hands[hand_index].inc_score(score);
     }
 }
 

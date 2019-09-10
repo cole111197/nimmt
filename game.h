@@ -10,10 +10,12 @@ class Game{
         std::vector<std::vector<Card>> table;
         std::vector<Hand> hands;
     public:
-        Game(Deck &deck, int players);
+        Game(int players);
         std::string to_string();
         std::vector<Hand>& getHands();
-        int play(int hand_index, int card_index);
+        int hand_score(int hand_index);
+        int row_score(int row);
+        void play(int hand_index, int card_index);
         void reset();
 };
 

@@ -10,6 +10,7 @@ class Deck{
         std::vector<Card> cards;
     public:
         Deck(int maxsize);
+        int get_size();
         void reset();
         void shuffle();
         Card draw();

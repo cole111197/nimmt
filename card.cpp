@@ -16,7 +16,21 @@ Card::Card(int value){
 }
 
 std::string Card::to_string(){
-    return "[" + std::to_string(_value) + "]" + "(" + std::to_string(_score) + ")";
+    std::string svalue;    
+    std::string sscore;
+    if(_value < 10){
+        svalue = "  " + std::to_string(_value);
+    } else if(_value < 100){
+        svalue = " " + std::to_string(_value);
+    } else {
+        svalue = std::to_string(_value);
+    }
+    if(_score < 10){
+        sscore = " " + std::to_string(_score);    
+    } else {
+        sscore = std::to_string(_score);    
+    }
+    return "[" + svalue + "]" + "(" + sscore + ")";
 }
 
 int Card::get_value(){

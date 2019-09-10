@@ -6,19 +6,18 @@
 #include <vector>
 
 int main(){
-    Deck deck{104};
-    deck.shuffle();
-    Game game{deck, 4};
-
+    Game game{4};
+    
     std::cout << game.to_string() << std::endl;
-    std::cout << game.play(0,0) << std::endl;
-    std::cout << game.to_string() << std::endl;
-    std::cout << game.play(0,0) << std::endl;
-    std::cout << game.to_string() << std::endl;
-    std::cout << game.play(0,0) << std::endl;
-    std::cout << game.to_string() << std::endl;
-    std::cout << game.play(0,0) << std::endl;
-    std::cout << game.to_string() << std::endl;
-    std::cout << game.play(0,0) << std::endl;
-    std::cout << game.to_string() << std::endl;
+    for(int i = 0; i < 10; i++){
+            for(int h = 0; h < 4; h++){
+                game.play(h,0);
+                std::cout << game.to_string() << std::endl;
+                std::cout << "Hand " << h << " score: " << std::to_string(game.hand_score(h)) << std::endl;
+            }
+    }
+    std::cout << "-------------\nScores:" << std::endl;
+    for(int h = 0; h < 4; h++){
+        std::cout << "Hand " << h << " score: " << std::to_string(game.hand_score(h)) << std::endl;
+    }
 }

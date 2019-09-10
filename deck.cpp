@@ -8,6 +8,10 @@ Deck::Deck(int maxsize){
     }
 }
 
+int Deck::get_size(){
+    return _size;
+}
+
 void Deck::reset(){
     cards.clear();
     for(int i = 1; i <= _maxsize; i++){
