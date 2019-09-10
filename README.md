@@ -7,7 +7,7 @@
 [ ] Fix deck shuffle  
 [ ] Standardize method names  
 [ ] Refactor  
-    [ ] Card  
-    [ ] Hand  
-    [ ] Deck  
-    [ ] Game  
+----[ ] Card  
+----[ ] Hand  
+----[ ] Deck  
+----[ ] Game  
