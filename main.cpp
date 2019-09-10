@@ -13,11 +13,12 @@ int main(){
             for(int h = 0; h < 4; h++){
                 game.play(h,0);
                 std::cout << game.to_string() << std::endl;
-                std::cout << "Hand " << h << " score: " << std::to_string(game.hand_score(h)) << std::endl;
+                std::cout << "Hand " << h << " score: " << std::to_string(game.get_hand_score(h)) << std::endl;
             }
     }
-    std::cout << "-------------\nScores:" << std::endl;
+    std::cout << "-----------------\nScores:" << std::endl;
     for(int h = 0; h < 4; h++){
-        std::cout << "Hand " << h << " score: " << std::to_string(game.hand_score(h)) << std::endl;
+        std::cout << "Hand " << h << " score: " << std::to_string(game.get_hand_score(h)) << std::endl;
     }
+    std::cout << "-----------------" << std::endl;
 }

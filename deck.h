@@ -7,13 +7,13 @@ class Deck{
     private:
         int _maxsize;
         int _size;
-        std::vector<Card> cards;
+        std::vector<Card> _cards;
     public:
         Deck(int maxsize);
+        Card draw();
         int get_size();
         void reset();
         void shuffle();
-        Card draw();
         std::string to_string();
 };
 

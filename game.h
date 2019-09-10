@@ -7,16 +7,15 @@
 
 class Game{
     private:
-        std::vector<std::vector<Card>> table;
-        std::vector<Hand> hands;
+        std::vector<std::vector<Card>> _table;
+        std::vector<Hand> _hands;
     public:
         Game(int players);
-        std::string to_string();
-        std::vector<Hand>& getHands();
-        int hand_score(int hand_index);
-        int row_score(int row);
         void play(int hand_index, int card_index);
+        int get_hand_score(int hand_index);
+        int get_row_score(int row);
         void reset();
+        std::string to_string();
 };
 
 #endif
