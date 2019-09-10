@@ -16,7 +16,7 @@ Card::Card(int value){
 }
 
 std::string Card::to_string(){
-    return "[" + std::to_string(_value) + "]";
+    return "[" + std::to_string(_value) + "]" + "(" + std::to_string(_score) + ")";
 }
 
 int Card::get_value(){

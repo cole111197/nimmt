@@ -10,7 +10,7 @@ class Game{
     public:
         Game(Deck &deck);
         std::string to_string();
-        void play(Card card, int row);
+        int play(Card card);
         void reset();
 };
 
