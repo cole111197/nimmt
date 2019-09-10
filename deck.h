@@ -1,6 +1,7 @@
 #ifndef __DECK_H
 #define __DECK_H
-#include "hand.h"
+#include "card.h"
+#include <vector>
 
 class Deck{
     private:

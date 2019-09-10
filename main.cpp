@@ -8,5 +8,7 @@ int main(){
     Deck deck{104};
     deck.shuffle();
     Game game{deck};
-    std::cout << game.to_string() << std::endl;
+    Hand hand0{deck};
+    Hand hand1{deck};
+    //game.play(hand0.play(0), 2);
 }

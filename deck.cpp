@@ -1,5 +1,6 @@
 #include "deck.h"
 #include <algorithm>
+#include <iostream>
 
 Deck::Deck(int maxsize){
     for(int i = 1; i <= maxsize; i++){

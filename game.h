@@ -8,8 +8,9 @@ class Game{
     private:
         std::vector<std::vector<Card>> table;
     public:
-        Game(Deck deck);
+        Game(Deck &deck);
         std::string to_string();
+        void play(Card card, int row);
         void reset();
 };
 

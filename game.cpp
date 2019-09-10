@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-Game::Game(Deck deck){
+Game::Game(Deck &deck){
     for(int i = 0; i < 4; i++){
         std::vector<Card> temp;
         temp.push_back(deck.draw());
@@ -16,10 +16,15 @@ std::string Game::to_string(){
     {
         for (int j = 0; j < table[i].size(); j++)
         {
-            temp += table[i][j].to_string() + "\n";
+            temp += table[i][j].to_string() + "  ";
         }
+        temp += "\n";
     }
     return temp;
+}
+
+void Game::play(Card card, int row){
+    table[row].push_back(card);
 }
 
 void Game::reset(){

@@ -1,15 +1,18 @@
 #ifndef __HAND_H
 #define __HAND_H
 #include "card.h"
+#include "deck.h"
 #include <vector>
 #include <string>
 
 class Hand{
     private:
-        int _size;
+        static int id;
+        int _id = id++;
         std::vector<Card> cards;
     public:
-        int play(int index);
+        Hand(Deck &deck);
+        Card play(int index);
         std::string to_string();
 };
 
