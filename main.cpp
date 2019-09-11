@@ -10,14 +10,14 @@ int main(){
     
     std::cout << game.to_string() << std::endl;
     for(int i = 0; i < 10; i++){
-            for(int h = 0; h < 4; h++){
+            for(int h = 0; h < 10; h++){
                 game.play(h,0);
                 std::cout << game.to_string() << std::endl;
                 std::cout << "Hand " << h << " score: " << std::to_string(game.get_hand_score(h)) << std::endl;
             }
     }
     std::cout << "-----------------\nScores:" << std::endl;
-    for(int h = 0; h < 4; h++){
+    for(int h = 0; h < 10; h++){
         std::cout << "Hand " << h << " score: " << std::to_string(game.get_hand_score(h)) << std::endl;
     }
     std::cout << "-----------------" << std::endl;
