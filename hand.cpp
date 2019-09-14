@@ -32,7 +32,7 @@ std::string Hand::to_string(){
     std::string temp;
     temp += "ID: " + std::to_string(_id) + "\nCards:\n";
     for(int i = 0; i < _cards.size(); i++){
-        temp += _cards[i].to_string() + "\n";
+        temp += std::to_string(i) + ": " + _cards[i].to_string() + "\n";
     }
     temp += "-------------------";
     return temp;

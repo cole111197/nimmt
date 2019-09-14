@@ -19,6 +19,7 @@ Game::Game(int players){
 }
 
 void Game::play(int hand_index, int card_index){
+    //Autoselect which row to take, if card fits in a row
     Card card = _hands[hand_index].remove(card_index);
     int target_row = -1;
     int target_value = -1;
@@ -31,7 +32,10 @@ void Game::play(int hand_index, int card_index){
         }
     }
 
-    if(target_row != -1){
+    //std::cout << card.to_string() << std::endl;
+    //std::cout << std::to_string(target_row) << std::endl;
+
+    if(target_row != -1){ //If card could fit into a row
         int score = 0;
         if(_table[target_row].size() == 5){
             for(int i = 0; i < 5; i++){
@@ -41,17 +45,60 @@ void Game::play(int hand_index, int card_index){
         }
         _table[target_row].push_back(card);
         _hands[hand_index].inc_score(score);
+    } else { //If card could NOT fit into a row
+        int target_row = 0;
+        int score = get_row_score(0);
+
+        for(int i = 1; i < 4; i++){
+            if(get_row_score(i) < score){
+                score = get_row_score(i);
+                target_row = i;
+            }
+        }
+        _table[target_row].clear();
+        _table[target_row].push_back(card);
+        _hands[hand_index].inc_score(score);
+    }
+}
+
+void Game::play(int card_index){
+    Card card = _hands[0].remove(card_index);
+    int target_row = -1;
+    int target_value = -1;
+    int current_value = -1;
+    for(int i = 0; i < 4; i++){
+        current_value = _table[i].back().get_value();
+        if(current_value >= target_value && current_value < card.get_value()){
+            target_row = i;
+            target_value = current_value;
+        }
+    }
+
+    if(target_row != -1){
+        std::cout << "Playing in row " << target_row << std::endl;
+        int score = 0;
+        if(_table[target_row].size() == 5){
+            for(int i = 0; i < 5; i++){
+                score += _table[target_row][i].get_score();
+            }
+            _table[target_row].clear();
+        }
+        _table[target_row].push_back(card);
+        _hands[0].inc_score(score);
     } else {
         int score = 0;
-        std::cout << "[Card value " << std::to_string(card.get_value()) << "]: ID of row to take and replace: ";
-        std::cin >> target_row;
+        target_row = -1;
+        while(target_row > 3 || target_row < 0){
+            std::cout << "[Card value " << std::to_string(card.get_value()) << "]: ID of row (0-3) to take and replace: ";
+            std::cin >> target_row;
+        }
         //target_row = 0;
         for(int i = 0; i < _table[target_row].size(); i++){
             score += _table[target_row][i].get_score();
         }
         _table[target_row].clear();
         _table[target_row].push_back(card);
-        _hands[hand_index].inc_score(score);
+        _hands[0].inc_score(score);
     }
 }
 
@@ -65,6 +112,11 @@ int Game::get_row_score(int row){
         score += _table[row][i].get_score();
     }
     return score;
+}
+
+void Game::print_hand(int hand_index){
+    Hand hand = _hands.at(0);
+    std::cout << hand.to_string() << std::endl;
 }
 
 void Game::reset(){

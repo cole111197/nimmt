@@ -12,8 +12,10 @@ class Game{
     public:
         Game(int players);
         void play(int hand_index, int card_index);
+        void play(int card_index);
         int get_hand_score(int hand_index);
         int get_row_score(int row);
+        void print_hand(int hand_index);
         void reset();
         std::string to_string();
 };
