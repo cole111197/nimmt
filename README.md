@@ -6,7 +6,7 @@
 [X] Test that changes in card vectors stay changed  
 [ ] Fix deck shuffle  
 [X] Standardize method names  
-[ ] Make input more interactive  
+[X] Make input more interactive  
 [ ] Refactor  
 ----[ ] Card  
 ----[ ] Hand  
